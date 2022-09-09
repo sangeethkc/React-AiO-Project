@@ -3056,7 +3056,9 @@ export const lineChartData = [
     { x: new Date(2008, 0, 1), y: 50 },
     { x: new Date(2009, 0, 1), y: 66 },
     { x: new Date(2010, 0, 1), y: 78 },
-    { x: new Date(2011, 0, 1), y: 84 },
+    { x: new Date(2011, 0, 1), y: 84 },<div>
+        
+    </div>
   ],
 
   [
