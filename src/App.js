@@ -27,18 +27,19 @@ import { useStateContext } from "./contexts/ContextProvider";
 import "./App.css";
 
 const App = () => {
-  const { activeMenu } = useStateContext();
+  const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode } = useStateContext();
 
   return (
-    <div>
+    <div className={ currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
             <TooltipComponent content="Settings" position="Top">
               <button
                 type="button"
-                className="text-3x1 p-3 hover:drop-shadow-x1 hover:bg-light-gray text-white"
-                style={{ background: "blue", borderRadius: "50%" }}
+                className="text-3xl p-3 hover:drop-shadow-x1 hover:bg-light-gray text-white"
+                style={{ background: currentColor, borderRadius: "50%" }}
+                onClick={() => setThemeSettings(true)}
               >
                 <FiSettings />
               </button>
@@ -56,15 +57,19 @@ const App = () => {
           )}
 
           <div
-            className={`dark:bg-main-bg bg-main-bg min-h-screen ${
-              activeMenu ? "md:ml-72" : "flex-2"
+            className={
+              `dark:bg-main-dark-bg bg-main-bg min-h-screen 
+              ${ activeMenu 
+                  ? "md:ml-72" 
+                  : "flex-2"
             }`}
           ></div>
 
-          <div className="fixed md:static bg-main-bg dark:bg-main-bg nav-bar w-full">
+          <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg nav-bar w-full">
             <Navbar />
 
             <div>
+              { themeSettings && <ThemeSettings />}
               <Routes>
                 {/* Dashboard */}
                 <Route path="/" element={<Ecommerce />} />
@@ -73,10 +78,10 @@ const App = () => {
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/employees" element={<Employees />} />
                 <Route path="/customers" element={<Customers />} />
-                {/* Aps */}
+                {/* Apps */}
+                <Route path="/calendar" element={<Calendar />} />
                 <Route path="/kanban" element={<Kanban />} />
                 <Route path="/Editor" element={<Editor />} />
-                <Route path="/calender" element={<Calendar />} />
                 <Route path="/color-picker" element={<ColorPicker />} />
                 {/* Charts */}
                 <Route path="/line" element={<Line />} />
