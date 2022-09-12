@@ -1,6 +1,5 @@
 import React from "react";
 import { MdOutlineCancel } from "react-icons/md";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 import { useStateContext } from "../contexts/ContextProvider";
 import { chatData } from "../data/dummy";
@@ -26,15 +25,24 @@ const Chat = () => {
                 <img className="rounded-lg h-80 w-15" src={item.image} alt="" />
                 <div>
                   <p className="semi-bold">{item.message}</p>
-                    <p className="font-semibold text-sm">{item.desc}</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm font-semibold">
-                      {item.time}
-                    </p>
+                  <p className="font-semibold text-sm">{item.desc}</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm font-semibold">
+                    {item.time}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         ))}
+      <div className="mt-5">
+        <Button
+          color="white"
+          bgColor={currentColor}
+          text="See All Chats"
+          borderRadius="10px"
+          width="full"
+        />
+      </div>
       </div>
     </div>
   );
