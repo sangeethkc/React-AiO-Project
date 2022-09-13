@@ -90,7 +90,7 @@ const Navbar = () => {
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => handleClick("userProfile")}
+            onClick={() => handleClick("userprofile")}
           >
             <img src={avatar} alt="avatar" className="w-8 h-8 rounded-full" />
             <p>
